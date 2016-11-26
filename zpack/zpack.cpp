@@ -47,7 +47,7 @@ IPackage* create(const Char* filename, u32 chunkSize, u32 fileUserDataSize)
 	header.oldSubVersion = 0;
 	header.subVersion = 0;
 	header.headerSize = iPackageHeader;
-	header.setfileCount(0);
+	header.setFileCount(0);
 	header.fileEntryOffset = iPackageHeader;
 	header.filenameOffset = iPackageHeader;
 	header.allFileEntrySize = 0;

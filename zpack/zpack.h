@@ -72,50 +72,30 @@ enum eResFormat
 struct PackageHeader
 {
 	u32	sign;
-#ifdef CRYPT
-	u32	rand1;
-#endif
 	u32	version;
 	u8 mainVersion;				//主版本号
 	u32 subVersion;				//次版本号
 	u32 oldSubVersion;			//旧次版本号
 	u32	headerSize;
-	u32	fileCountRaw;
-#ifdef CRYPT
-	u32	rand2;
-#endif
+	u32	fileCount;
 	u64	fileEntryOffset;
 	u64 filenameOffset;
 	u32	allFileEntrySize;
 	u32 allFilenameSize;
 	u32 originFilenamesSize;	//filename size before compression
 	u32 chunkSize;				//file compress unit
-#ifdef CRYPT
-	u32	rand3;
-#endif
 	u32	flag;
 	u32 fileEntrySize;
-#ifdef CRYPT
-	u32	rand4;
-#endif
 	u8 resFormat;				//资源格式PVR/PVRTC4
 	u32 unkown[1];
 	u32 reserved[18];
-	u32 fileCount()
+	u32 getFileCount()
 	{
-		return fileCountRaw
-#ifdef CRYPT
-			^ 0xABCD
-#endif
-			;
+		return fileCount;
 	}
-	void setfileCount(u32 v)
+	void setFileCount(u32 v)
 	{
-		fileCountRaw = v 
-#ifdef CRYPT
-			^ 0xABCD
-#endif
-			;
+		fileCount = v;
 	}
 };
 #pragma pack()

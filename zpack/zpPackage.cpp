@@ -737,14 +737,14 @@ bool Package::readHeader()
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 bool Package::readFileEntries()
 {
-	m_fileEntries.resize(m_header.fileCount() * m_header.fileEntrySize);
-	if (m_header.fileCount() == 0)
+	m_fileEntries.resize(m_header.getFileCount() * m_header.fileEntrySize);
+	if (m_header.getFileCount() == 0)
 	{
 		return true;
 	}
 	//_fseeki64(m_stream, m_header.fileEntryOffset, SEEK_SET);
 	fseek(m_stream, m_header.fileEntryOffset, SEEK_SET);
-	if (m_header.allFileEntrySize == m_header.fileCount() * m_header.fileEntrySize)
+	if (m_header.allFileEntrySize == m_header.getFileCount() * m_header.fileEntrySize)
 	{
 		//not compressed
 		fread(&m_fileEntries[0], m_header.allFileEntrySize, 1, m_stream);
@@ -753,9 +753,9 @@ bool Package::readFileEntries()
 	{
 		vector<u8> srcBuffer(m_header.allFileEntrySize);
 		fread(&srcBuffer[0], m_header.allFileEntrySize, 1, m_stream);
-		u32 dstBufferSize = m_header.fileCount() * m_header.fileEntrySize;
+		u32 dstBufferSize = m_header.getFileCount() * m_header.fileEntrySize;
 		int ret = uncompress(&m_fileEntries[0], &dstBufferSize, &srcBuffer[0], m_header.allFileEntrySize);
-		if (ret != Z_OK || dstBufferSize != m_header.fileCount() * m_header.fileEntrySize)
+		if (ret != Z_OK || dstBufferSize != m_header.getFileCount() * m_header.fileEntrySize)
 		{
 			return false;
 		}
@@ -845,7 +845,7 @@ void Package::writeTables(bool avoidOverwrite)
 	if (m_fileEntries.empty())
 	{
 		//nothing to write
-		m_header.setfileCount(0);
+		m_header.setFileCount(0);
 		m_header.allFileEntrySize = 0;
 		m_header.allFilenameSize = 0;
 		m_header.fileEntryOffset = sizeof(m_header);
@@ -923,7 +923,7 @@ void Package::writeTables(bool avoidOverwrite)
 		fwrite(&dstFilenameBuffer[0], dstFilenameSize, 1, m_stream);
 	}
 
-	m_header.setfileCount(getFileCount());
+	m_header.setFileCount(getFileCount());
 	m_header.allFileEntrySize = dstEntrySize;
 	m_header.filenameOffset = m_header.fileEntryOffset + m_header.allFileEntrySize;
 	m_header.allFilenameSize = dstFilenameSize;
@@ -1038,7 +1038,7 @@ u32 Package::insertFileEntry(FileEntry& entry, const Char* filename)
 		lastEnd = thisEntry.byteOffset + thisEntry.packSize;
 	}
 
-	if (m_header.fileCount() == 0 || m_header.fileEntryOffset > lastEnd + entry.packSize)
+	if (m_header.getFileCount() == 0 || m_header.fileEntryOffset > lastEnd + entry.packSize)
 	{
 		entry.byteOffset = lastEnd;
 		if (entry.byteOffset + entry.packSize > m_packageEnd)
