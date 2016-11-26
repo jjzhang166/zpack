@@ -111,9 +111,11 @@ struct PackageHeader
 	}
 	void setfileCount(u32 v)
 	{
+		fileCountRaw = v 
 #ifdef CRYPT
-		fileCountRaw = v ^ 0xABCD;
+			^ 0xABCD
 #endif
+			;
 	}
 };
 #pragma pack()
