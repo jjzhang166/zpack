@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="WriteCompressFile.cpp" />
+    <ClCompile Include="zlib\zutil.c" />
+    <ClCompile Include="zpCompressedFile.cpp" />
+    <ClCompile Include="zpack.cpp" />
+    <ClCompile Include="zpFile.cpp" />
+    <ClCompile Include="zpPackage.cpp" />
+    <ClCompile Include="zpWriteFile.cpp" />
+    <ClCompile Include="zlib\adler32.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\compress.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\crc32.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\deflate.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\infback.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\inffast.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\inflate.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\inftrees.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\trees.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\uncompr.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="ZpWriteCompressFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WriteCompressFile.h" />
+    <ClInclude Include="zpack.h" />
+    <ClInclude Include="zpCompressedFile.h" />
+    <ClInclude Include="zpFile.h" />
+    <ClInclude Include="zpPackage.h" />
+    <ClInclude Include="zpWriteFile.h" />
+    <ClInclude Include="zlib\crc32.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\deflate.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\inffast.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\inffixed.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\inflate.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\inftrees.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\trees.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\zconf.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\zconf.in.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\zlib.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\zutil.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="ZpWriteCompressFile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="zip">
+      <UniqueIdentifier>{976d6915-a565-432e-a746-ce7ad686cfc3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
